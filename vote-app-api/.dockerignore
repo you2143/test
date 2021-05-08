@@ -1,0 +1,8 @@
+.envrc
+.env.sample
+.envrc.*
+
+.git
+.circleci
+docker
+tmp

@@ -1,0 +1,64 @@
+version: '3.7'
+services:
+  nuxt:
+    container_name: vote_app_front
+    restart: always
+    build:
+      context: ./docker/front/.
+    tty: true
+    depends_on:
+      - api
+      - db
+    volumes:
+      - ./vote-app-front:/usr/src/app/
+    ports:
+      - 13000:3000
+    command: npm run dev
+    networks:
+      - apinet
+  api:
+    container_name: vote_app_api
+    restart: always
+    build:
+      context: ./docker/api/.
+    volumes:
+      - ./vote-app-api:/go/src/app
+    ports:
+      - 28080:8080
+      - 22345:2345
+    tty: true
+    depends_on:
+      - db
+    environment:
+      MYSQL_DATABASE: ${MYSQL_DATABASE}
+      MYSQL_USER: ${MYSQL_USER}
+      MYSQL_PASSWORD: ${MYSQL_PASSWORD}
+      MYSQL_HOST: db
+    networks:
+      - dbnet
+      - apinet
+  db:
+    image: mysql:5.7
+    restart: always
+    environment:
+      MYSQL_DATABASE: ${MYSQL_DATABASE}
+      MYSQL_USER: ${MYSQL_USER}
+      MYSQL_PASSWORD: ${MYSQL_PASSWORD}
+      MYSQL_ROOT_PASSWORD: ${MYSQL_ROOT_PASSWORD}
+      MYSQL_HOST: db
+      TZ: 'Asia/Tokyo'
+    command: mysqld --character-set-server=utf8mb4 --collation-server=utf8mb4_unicode_ci
+    ports:
+      - 30000:3306
+    volumes:
+      - db-data:/var/lib/mysql
+      - ./docker/db/init:/docker-entrypoint-initdb.d
+      - ./docker/db/my.cnf:/etc/mysql/conf.d/my.cnf
+    networks:
+      - dbnet
+
+volumes:
+  db-data:
+networks:
+  dbnet:
+  apinet:

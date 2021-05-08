@@ -1,0 +1,323 @@
+definitions:
+  model.MasterMovie:
+    properties:
+      createdAt:
+        type: string
+      deletedAt:
+        type: string
+      id:
+        type: integer
+      title:
+        type: string
+      updatedAt:
+        type: string
+    type: object
+  model.MasterPerson:
+    properties:
+      createdAt:
+        type: string
+      deletedAt:
+        type: string
+      id:
+        type: integer
+      name:
+        type: string
+      updatedAt:
+        type: string
+    type: object
+  response.MasterMovie:
+    properties:
+      id:
+        type: integer
+      title:
+        type: string
+    type: object
+  response.MasterPerson:
+    properties:
+      id:
+        type: integer
+      name:
+        type: string
+    type: object
+  response.ResponseError:
+    properties:
+      message:
+        type: string
+      status_code:
+        type: integer
+    type: object
+info:
+  contact: {}
+paths:
+  /api/v1/masterMovie:
+    get:
+      consumes:
+      - multipart/form-data
+      description: Get all masterMovie by request
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            items:
+              $ref: '#/definitions/model.MasterMovie'
+            type: array
+        "500":
+          description: Internal Server Error
+          schema:
+            $ref: '#/definitions/response.ResponseError'
+      summary: Get All MasterMovie
+    post:
+      consumes:
+      - multipart/form-data
+      description: create masterMovie by request
+      parameters:
+      - description: movie title is required
+        in: formData
+        name: title
+        required: true
+        type: string
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: ""
+        "500":
+          description: Internal Server Error
+          schema:
+            $ref: '#/definitions/response.ResponseError'
+      summary: Create MasterMovie
+  /api/v1/masterMovie/{id}:
+    delete:
+      consumes:
+      - multipart/form-data
+      description: delete store by request
+      parameters:
+      - description: master movie id is required
+        in: path
+        name: id
+        required: true
+        type: integer
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: ""
+        "500":
+          description: Internal Server Error
+          schema:
+            $ref: '#/definitions/response.ResponseError'
+      summary: Delete MasterMovie
+    get:
+      consumes:
+      - multipart/form-data
+      description: Get masterMovie by request
+      parameters:
+      - description: movie id is required
+        in: path
+        name: id
+        required: true
+        type: integer
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/response.MasterMovie'
+        "500":
+          description: Internal Server Error
+          schema:
+            $ref: '#/definitions/response.ResponseError'
+      summary: Get MasterMovie
+    put:
+      consumes:
+      - multipart/form-data
+      description: Update store by request
+      parameters:
+      - description: master movie id is required
+        in: path
+        name: id
+        required: true
+        type: integer
+      - description: title id is required
+        in: formData
+        name: title
+        required: true
+        type: string
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: ""
+        "500":
+          description: Internal Server Error
+          schema:
+            $ref: '#/definitions/response.ResponseError'
+      summary: Update MasterMovie
+  /api/v1/masterPerson:
+    get:
+      consumes:
+      - multipart/form-data
+      description: Get all masterPerson by request
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            items:
+              $ref: '#/definitions/model.MasterPerson'
+            type: array
+        "500":
+          description: Internal Server Error
+          schema:
+            $ref: '#/definitions/response.ResponseError'
+      summary: Get All MasterPerson
+    post:
+      consumes:
+      - multipart/form-data
+      description: create masterPerson by request
+      parameters:
+      - description: person name is required
+        in: formData
+        name: name
+        required: true
+        type: string
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: ""
+        "500":
+          description: Internal Server Error
+          schema:
+            $ref: '#/definitions/response.ResponseError'
+      summary: Create MasterPerson
+  /api/v1/masterPerson/{id}:
+    delete:
+      consumes:
+      - multipart/form-data
+      description: delete store by request
+      parameters:
+      - description: person id is required
+        in: path
+        name: id
+        required: true
+        type: integer
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: ""
+        "500":
+          description: Internal Server Error
+          schema:
+            $ref: '#/definitions/response.ResponseError'
+      summary: Delete MasterPerson
+    get:
+      consumes:
+      - multipart/form-data
+      description: Get masterPerson by request
+      parameters:
+      - description: person id is required
+        in: path
+        name: id
+        required: true
+        type: integer
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/response.MasterPerson'
+        "500":
+          description: Internal Server Error
+          schema:
+            $ref: '#/definitions/response.ResponseError'
+      summary: Get MasterPerson
+    put:
+      consumes:
+      - multipart/form-data
+      description: Update store by request
+      parameters:
+      - description: person id is required
+        in: path
+        name: id
+        required: true
+        type: integer
+      - description: name id is required
+        in: formData
+        name: name
+        required: true
+        type: string
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: ""
+        "500":
+          description: Internal Server Error
+          schema:
+            $ref: '#/definitions/response.ResponseError'
+      summary: Update MasterPerson
+  /api/v1/vote:
+    get:
+      consumes:
+      - multipart/form-data
+      description: Get All Vote
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            type: Array
+        "500":
+          description: Internal Server Error
+          schema:
+            $ref: '#/definitions/response.ResponseError'
+      summary: Get All Vote
+    post:
+      consumes:
+      - multipart/form-data
+      description: create vote by request
+      parameters:
+      - description: movie id is required
+        in: formData
+        name: movie_id
+        required: true
+        type: integer
+      - description: person id is required
+        in: formData
+        name: person_id
+        required: true
+        type: integer
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: ""
+        "500":
+          description: Internal Server Error
+          schema:
+            $ref: '#/definitions/response.ResponseError'
+      summary: Create Vote
+  /api/v1/voteIsEnd:
+    get:
+      consumes:
+      - multipart/form-data
+      description: Check vote is End
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: ""
+        "500":
+          description: Internal Server Error
+          schema:
+            $ref: '#/definitions/response.ResponseError'
+      summary: Check vote is End
+swagger: "2.0"
