@@ -1,4 +1,4 @@
-# datsumo-api
+# vote-app-api
 
 ## プロジェクトの実行準備
 
@@ -6,7 +6,7 @@
 
 プロジェクトのルートディレクトリに`.env.sample`というファイルがあるので、コピーして`.env`ファイルを作成してください
 
-`ELASTIC_HOST`と`MYSQL_HOST`以外はご自身の環境毎に独自で設定していただいて構いません
+`MYSQL_HOST`以外はご自身の環境毎に独自で設定していただいて構いません
 
 ## プロジェクトの実行
 
@@ -14,7 +14,7 @@ Goを開発環境で実行するためにはDockerを起動後、`docker-compose
 
 APIの定義はswagとgin-swaggerというプラグインを使用して定義しています
 
-起動後に、`http://localhost:10001/swagger/index.html`のページにアクセスするとswaggerで定義されたAPI一覧が確認できます
+起動後に、`http://localhost:28080/swagger/index.html`のページにアクセスするとswaggerで定義されたAPI一覧が確認できます
 
 APIの引数、返り値を変更した場合は、以下のコマンドをGolangを実行しているDocker内部で実行してください。
 

@@ -58,9 +58,5 @@ func (masterMovieService *masterMovieService) Update(s *request.UpdateMasterMovi
 
 func (masterMovieService *masterMovieService) Delete(s *request.DeleteMasterMovie) error {
 	ctx := context.Background()
-	err := masterMovieService.MasterMovieRepository.Delete(ctx, s)
-	if err != nil {
-		return err
-	}
-	return nil
+	return masterMovieService.MasterMovieRepository.Delete(ctx, s)
 }

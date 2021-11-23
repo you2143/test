@@ -1,4 +1,10 @@
 # vote-app-front
+Voteアプリのフロントエンドアプリです。  
+ほとんど未完成のため、適当に手を加えてください。
+使っている技術は主なものとして以下の通りです。
+・Nuxt.js
+・vuetify
+・typescript
 
 ## Build Setup
 
